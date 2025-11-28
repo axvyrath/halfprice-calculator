@@ -10,9 +10,9 @@ const invalidInputHTML = `
 function createOutputHTML(originalPrice, helpPrice, userPrice) {
 	return `
         <hr />
-        <h3>Your original price ${originalPrice} baht</h3>
-        <h3>has been reduced to ${userPrice} baht</h3>
-        <p>Program help ${helpPrice} baht</p>
+        <h3>Your original price ${originalPrice.toFixed(2)} baht</h3>
+        <h3>has been reduced to ${userPrice.toFixed(2)} baht</h3>
+        <p>Program help ${helpPrice.toFixed(2)} baht</p>
         <hr />
     `
 }
