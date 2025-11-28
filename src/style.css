@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+	--viewport-bg-color: hsl(0, 0%, 2%);
+	--wrapper-bg-color: hsl(0, 0%, 4.5%);
+	--main-color: hsl(208, 100%, 97%);
+	--calculate-btn-hover-color: hsla(208, 100%, 92%, 0.849);
+	--calculate-btn-active-color: hsl(208, 100%, 87%);
+}
+
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	background-color: var(--viewport-bg-color);
+}
+
+main {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	width: 25rem;
+	height: 70dvh;
+	padding: 2rem;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: inherit;
+	border-radius: 25px;
+	background-color: var(--wrapper-bg-color);
+}
+
+@property --wrapper-border-angle {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false;
+}
+
+@keyframes border-spin {
+	from {
+		--wrapper-border-angle: 0deg;
+	}
+
+	to {
+		--wrapper-border-angle: 360deg;
+	}
+}
+
+.wrapper::after,
+.wrapper::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	z-index: -1;
+	padding: 4px;
+	background-image: conic-gradient(from var(--wrapper-border-angle), transparent 60%, aqua);
+	animation: 4s border-spin linear infinite;
+}
+
+.wrapper::before {
+	filter: blur(2rem);
+	opacity: 0.5;
+}
+
+.title {
+	color: var(--main-color);
+	font-size: 35px;
+	text-align: center;
+}
+
+.input-area {
+	width: 100%;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.input-area > p {
+	color: var(--main-color);
+	font-size: 12px;
+}
+
+.input-area > input {
+	color: var(--main-color);
+	padding: 4px 10px;
+	background-color: transparent;
+	border: 2px solid var(--main-color);
+	border-radius: 10px;
+	appearance: textfield;
+}
+
+.calculate-btn {
+	margin: 10px;
+	padding: 4px 30px;
+	background-color: var(--main-color);
+	font-size: 15px;
+	border: none;
+	border-radius: 10px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.calculate-btn:hover {
+	background-color: var(--calculate-btn-hover-color);
+}
+
+.calculate-btn:active {
+	background-color: var(--calculate-btn-active-color);
+}
+
+.result-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 20px 0px;
+}
+
+.result-container > h3,
+.result-container > p {
+	color: var(--main-color);
+	padding: 0;
+	margin: 0;
+}
+
+.result-container > hr {
+	width: 20rem;
+	margin: 1rem 0;
+}
